@@ -29,6 +29,8 @@ import com.std.dev.TpmsDataSrc;
 import com.tpms.utils.Log;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 /* loaded from: classes.dex */
 public class TpmsMainActivity extends Activity {
@@ -236,6 +238,7 @@ public class TpmsMainActivity extends Activity {
         super.onBackPressed();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(TiresStateEvent alarm) {
         if (!this.mTpms.isDevCheckOk()) {
             return;
@@ -359,10 +362,12 @@ public class TpmsMainActivity extends Activity {
         return this.mTpms.getTempString(val) + this.mTpms.getWenduDanwei();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(DeviceOpenEvent event) {
         boolean z = event.mOpen;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(TpmsDevErrorEvent error) {
         finish();
     }
