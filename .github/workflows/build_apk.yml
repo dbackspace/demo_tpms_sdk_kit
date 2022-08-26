@@ -1,0 +1,53 @@
+name: "Build APK "
+on:
+  push:
+    branches:
+      - master
+jobs:
+  setup:
+    name: Run set up
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Authenication
+        run: chmod +x  gradlew
+    #       - name : Run test
+    #         run  : ./gradlew test --stacktrace
+
+  apk:
+    name: Generate APK
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: Setup JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Authenication
+        run: chmod +x gradlew
+      - name: Build APK
+        run: ./gradlew assembleDebug --stacktrace
+      - name: Upload APK to Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: tpmsdemo-debug.apk
+          path: app/build/outputs/apk/debug/tpmsdemo-debug.apk
+      - name: Get current date
+        id: date
+        run: echo "MY_DATE=$(date +%Y%m%d%H%M)" >> $GITHUB_ENV
+      - name: Create Release with Debug APK
+        uses: underwindfall/create-release-with-debugapk@v2.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release-${{ env.MY_DATE }}
+          asset_path: app/build/outputs/apk/debug/tpmsdemo-debug.apk
+          asset_name: TpmsDemo.apk
+          asset_content_type: application/zip
