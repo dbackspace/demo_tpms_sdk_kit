@@ -99,16 +99,9 @@ public class TpmsApplication extends Application {
 
     public void startTpms() {
         Log.i(this.TAG, "startTpms");
-        if (this.datasrc == null) {
-            this.datasrc = new TpmsDataSrcUsb(this);
-            this.datasrc.init();
-            this.tpms = Tpms3.getInstant();
-            this.tpms.initCodes();
-            this.tpms.initMisc(this);
-            this.datasrc.setBufferFrame(this.tpms.getDecode().getPackBufferFrame());
-        }
-        this.datasrc.start();
-        this.tpms.initShakeHand();
+        this.tpms = Tpms3.getInstant();
+        this.tpms.initSrc(this, null);
+        this.tpms.startTpms();
     }
 
     public void stopTpms() {
