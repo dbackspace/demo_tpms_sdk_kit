@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/demo_tpms_sdk_kit.iml" filepath="$PROJECT_DIR$/.idea/modules/demo_tpms_sdk_kit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.iml" filepath="$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.main.iml" filepath="$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/tpmsdemo/demo_tpms_sdk_kit.tpmsdemo.unitTest.iml" />
+    </modules>
+  </component>
+</project>

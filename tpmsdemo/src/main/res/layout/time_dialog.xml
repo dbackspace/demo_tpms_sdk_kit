@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/time_dialog_plane"
+    android:background="#88888888">
+
+
+    <LinearLayout
+        android:layout_width="470px"
+        android:layout_height="380px"
+        android:orientation="vertical"
+        android:background="#000"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:layout_marginBottom="10px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:text="@string/luntaixiangtongjingaobutishe"
+            android:textSize="27px"
+            android:textColor="#FFF" />
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="380px"
+            android:background="#fff" />"
+
+        <!-- <RadioGroup-->
+        <LinearLayout
+            android:id="@+id/time_select"
+            android:layout_marginTop="8px"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+
+            android:layout_centerHorizontal="true">
+
+            <Button
+                android:id="@+id/mainbtn_0"
+
+                android:layout_width="440px"
+                android:layout_height="64px"
+
+                android:gravity="center"
+
+                android:text="@string/tenminiter"
+                android:tag="600"
+                android:textSize="25.0px"
+
+                />
+
+            <Button
+                android:id="@+id/mainbtn_1"
+                android:layout_width="440px"
+                android:layout_height="64px"
+
+                android:gravity="center"
+
+                android:text="@string/tentwominiter"
+                android:tag="1200"
+                android:textSize="25.0px"
+
+                />
+
+            <Button
+                android:id="@+id/mainbtn_2"
+                android:layout_width="440px"
+                android:layout_height="64px"
+
+                android:gravity="center"
+                android:tag="1800"
+                android:text="@string/tenthereminiter"
+                android:textSize="25.0px"
+
+                />
+
+            <Button
+                android:id="@+id/mainbtn_3"
+                android:layout_width="440px"
+                android:layout_height="64px"
+                android:layout_marginBottom="14px"
+
+                android:gravity="center"
+                android:tag="9223372036854775807"
+                android:text="@string/xihuoqian"
+                android:textSize="23.0px"
+
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

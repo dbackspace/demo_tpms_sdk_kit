@@ -1,0 +1,4 @@
+include ':tpmsdemo'
+//include ':tpmssdk'
+//include ':app'
+

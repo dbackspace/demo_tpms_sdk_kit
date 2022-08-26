@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">TpmsDemo</string>
+
+    <string name="zhuangtailantaiya">TPMS</string>
+    <string name="ztltaiyayichang">Abnormal tire pressure, click for details!</string>
+    <string name="zhuangtailantaiyazhengchang">Tire pressure is properly.</string>
+</resources>

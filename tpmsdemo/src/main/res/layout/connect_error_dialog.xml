@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:id="@+id/time_dialog_plane"
+    android:background="#88888888">
+
+
+    <LinearLayout
+        android:layout_width="440px"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#000"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:layout_marginBottom="10px"
+            android:text="@string/taiyalianjieshibai"
+            android:textSize="27px"
+            android:textColor="#FFF" />
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="420px"
+            android:background="#fff" />
+
+        <Button
+            android:id="@+id/btn_is_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:layout_marginBottom="10px"
+            android:background="@drawable/btn_ok_selector"
+            android:text="@android:string/ok"
+            android:textSize="37px"
+            android:textColor="#FFF" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

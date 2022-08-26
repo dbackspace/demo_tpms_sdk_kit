@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: C./Users/Acer/Pictures/Du an moi/demo_tpms_sdk_kit/tpmsdemo/libs/tpmssdk-release.aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f7be084803981e25a3320732285ee37/jetified-tpmssdk-release/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f7be084803981e25a3320732285ee37/jetified-tpmssdk-release/jars/libs/tpmslibrary.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f7be084803981e25a3320732285ee37/jetified-tpmssdk-release/jars/libs/xUtils-2.6.14.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f7be084803981e25a3320732285ee37/jetified-tpmssdk-release/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6f7be084803981e25a3320732285ee37/jetified-tpmssdk-release/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

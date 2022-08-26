@@ -1,0 +1,128 @@
+11-13 14:56:09.127: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:09.127: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:10.387: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:10.397: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:10.607: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:10.607: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:10.777: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:10.777: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:10.937: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:10.937: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.087: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.087: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.387: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.387: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.557: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.557: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.697: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.707: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:11.907: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:11.907: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:18.907: D/dalvikvm(1166): Debugger has detached; object registry had 1 entries
+11-13 14:56:22.747: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:22.757: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:22.777: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:23.527: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:23.527: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:23.547: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:24.027: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:24.027: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:24.047: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:24.417: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:24.417: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:24.437: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:24.687: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:24.697: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:24.717: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:24.957: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:24.957: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:24.977: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:25.187: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:25.197: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:25.217: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:25.437: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:25.437: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:25.467: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:25.687: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:25.687: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:25.707: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.017: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.027: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.047: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.257: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.447: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.447: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.467: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.627: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.627: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.647: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.797: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.807: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.827: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:26.967: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:26.967: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:26.987: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:27.147: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:27.147: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:27.177: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:27.347: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:27.347: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:27.367: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:27.537: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:27.537: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:27.567: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:27.797: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:27.797: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:27.817: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:28.017: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:28.017: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:28.037: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:28.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:28.227: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:28.247: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:28.457: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:28.467: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:28.487: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:28.667: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:28.667: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:28.687: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:28.837: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:28.847: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:28.867: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:29.257: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:29.267: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:29.287: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:29.517: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:29.517: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:29.547: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:29.727: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:29.727: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:29.747: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:30.177: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:30.177: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:30.197: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:30.437: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:30.437: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:30.467: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:30.647: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:30.647: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:30.667: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:30.837: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:30.837: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:30.867: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:31.287: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:31.287: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:31.307: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:31.547: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:31.547: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:31.587: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:31.977: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:31.987: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:32.007: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
+11-13 14:56:32.247: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+11+00+14+A1+0D
+11-13 14:56:32.247: D/MonitorService(1166): SerialPort: write data(Hex) = 21+23+41+54+0E+00+AA+B1+A1+07+21+00+24+A1+0D
+11-13 14:56:32.267: D/MonitorService(1166): SerialPort: read len1:14, bytes:21+23+42+54+0D+AA+A1+B1+07+FF+01+03+59+0D
