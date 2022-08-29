@@ -94,7 +94,7 @@ public class TpmsDataSrcUsb extends TpmsDataSrc {
 
     @Override // com.std.dev.TpmsDataSrc
     public void init() {
-        this.mUsbManager = (UsbManager) this.theapp.getSystemService("usb");
+        this.mUsbManager = (UsbManager) this.theapp.getSystemService(Context.USB_SERVICE);
         this.mEntries = new ArrayList();
         this.mPermissionIntent = PendingIntent.getBroadcast(this.theapp, 0, new Intent(ACTION_USB_PERMISSION), 0);
         IntentFilter filter1 = new IntentFilter(ACTION_USB_PERMISSION);
@@ -213,7 +213,7 @@ public class TpmsDataSrcUsb extends TpmsDataSrc {
                     }
                 }
             }
-        }.execute((Runnable) null);
+        }.execute();
     }
 
     private void startIoManager() {
