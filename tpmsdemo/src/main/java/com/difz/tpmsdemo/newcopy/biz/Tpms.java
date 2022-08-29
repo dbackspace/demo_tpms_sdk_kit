@@ -33,6 +33,8 @@ import com.difz.tpmsdemo.newcopy.widget.CDialog2;
 import com.difz.tpmsdemo.newcopy.widget.ClickToast;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.DecimalFormat;
 import java.util.HashMap;
@@ -357,10 +359,12 @@ public class Tpms {
         return this.mSpareTire;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(AlarmAgrs args) {
         this.mAlarmAgrs = args;
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(PaireIDOkEvent id) {
         if (id.tires == 1) {
             this.mFrontLeft.TiresID = id.mID;
@@ -375,6 +379,7 @@ public class Tpms {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(QueryIDOkEvent id) {
         if (id.tires == 1) {
             this.mFrontLeft.TiresID = id.mID;
@@ -389,6 +394,7 @@ public class Tpms {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(TiresStateEvent alarm) {
         if (alarm.tires == 1 && this.mFrontLeft != null) {
             alarm.mState.TiresID = this.mFrontLeft.TiresID;
@@ -445,6 +451,7 @@ public class Tpms {
         this.mencode.send(frame3);
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(ShakeHands sh) {
         if (sh.mShakeHandOK == 0) {
             queryBackLeft();

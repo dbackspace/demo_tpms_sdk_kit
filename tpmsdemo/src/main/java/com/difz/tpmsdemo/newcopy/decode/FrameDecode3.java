@@ -14,6 +14,8 @@ import com.difz.tpmsdemo.newcopy.utils.Log;
 import com.difz.tpmsdemo.newcopy.utils.SLOG;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.nio.ByteBuffer;
 
@@ -27,7 +29,7 @@ public class FrameDecode3 extends FrameDecode {
         this.mPackBufferFrame = new PackBufferFrame3();
     }
 
-    @Override // com.tpms.decode.FrameDecode
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(ByteBuffer frameBuf) {
         String log;
         byte[] frame = frameBuf.array();

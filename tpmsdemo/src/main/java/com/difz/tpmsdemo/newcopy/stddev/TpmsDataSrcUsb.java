@@ -24,6 +24,8 @@ import com.hoho.android.usbserial.util.HexDump;
 import com.hoho.android.usbserial.util.SerialInputOutputManager;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -298,6 +300,7 @@ public class TpmsDataSrcUsb extends TpmsDataSrc {
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(DeviceOpenEvent open) {
         if (!open.mOpen) {
             this.theapp.stopTpms();

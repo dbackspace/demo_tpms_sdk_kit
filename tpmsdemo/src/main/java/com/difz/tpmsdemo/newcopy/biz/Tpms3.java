@@ -27,6 +27,8 @@ import com.difz.tpmsdemo.newcopy.widget.CDialog2;
 import com.difz.tpmsdemo.newcopy.widget.ClickToast;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.Map;
 
@@ -300,6 +302,7 @@ public class Tpms3 extends Tpms {
         this.mencode.stopPaire();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(TimeSeedEvent ack) {
         byte ack0 = (byte) ((((((((this.time ^ 32) ^ 23) ^ 1) ^ (-122)) ^ 100) ^ 1) ^ (-126)) ^ 118);
         if (ack.mSeedAck == ack0) {
@@ -320,7 +323,7 @@ public class Tpms3 extends Tpms {
         }
     }
 
-    @Override // com.tpms.biz.Tpms
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(TiresStateEvent alarm) {
         if (alarm.tires == 1 && this.mFrontLeft != null) {
             alarm.mState.TiresID = this.mFrontLeft.TiresID;
@@ -607,6 +610,7 @@ public class Tpms3 extends Tpms {
         Log.i(this.TAG, "queryAllState ");
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(HeartbeatEvent hb) {
         HeartbeatEventAck();
     }
