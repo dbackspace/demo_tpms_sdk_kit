@@ -10,12 +10,11 @@ import android.hardware.usb.UsbDevice;
 import android.os.Build;
 import android.os.Process;
 
-import com.difz.tpmssdk.BKReceiver;
-import com.difz.tpmssdk.biz.Tpms;
-import com.difz.tpmssdk.biz.Tpms3;
-import com.std.dev.TpmsDataSrc;
-import com.std.dev.TpmsDataSrcUsb;
-import com.tpms.utils.Log;
+import com.difz.tpmsdemo.newcopy.biz.Tpms;
+import com.difz.tpmsdemo.newcopy.biz.Tpms3;
+import com.difz.tpmsdemo.newcopy.stddev.TpmsDataSrc;
+import com.difz.tpmsdemo.newcopy.stddev.TpmsDataSrcUsb;
+import com.difz.tpmsdemo.newcopy.utils.Log;
 
 /* loaded from: classes.dex */
 public class TpmsApplication extends Application {
@@ -99,9 +98,16 @@ public class TpmsApplication extends Application {
 
     public void startTpms() {
         Log.i(this.TAG, "startTpms");
-        this.tpms = Tpms3.getInstant();
-        this.tpms.initSrc(this, null);
-        this.tpms.startTpms();
+        if (this.datasrc == null) {
+            this.datasrc = new TpmsDataSrcUsb(this);
+            this.datasrc.init();
+            this.tpms = new Tpms3(this);
+            this.tpms.initCodes();
+            this.tpms.init();
+            this.datasrc.setBufferFrame(this.tpms.getDecode().getPackBufferFrame());
+        }
+        this.datasrc.start();
+        this.tpms.initShakeHand();
     }
 
     public void stopTpms() {

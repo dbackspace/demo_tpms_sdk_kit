@@ -16,17 +16,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.difz.tpmsdemo.R;
-import com.difz.tpmsdemo.widget.PAlertDialog;
-import com.difz.tpmssdk.biz.Tpms;
-import com.difz.tpmssdk.modle.DeviceOpenEvent;
-import com.difz.tpmssdk.modle.TiresState;
-import com.difz.tpmssdk.modle.TiresStateEvent;
-import com.difz.tpmssdk.modle.TpmsDevErrorEvent;
+import com.difz.tpmsdemo.newcopy.biz.Tpms;
+import com.difz.tpmsdemo.newcopy.modle.DeviceOpenEvent;
+import com.difz.tpmsdemo.newcopy.modle.TiresState;
+import com.difz.tpmsdemo.newcopy.modle.TiresStateEvent;
+import com.difz.tpmsdemo.newcopy.modle.TpmsDevErrorEvent;
+import com.difz.tpmsdemo.newcopy.stddev.TpmsDataSrc;
+import com.difz.tpmsdemo.newcopy.utils.Log;
+import com.difz.tpmsdemo.newcopy.widget.PAlertDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
-import com.std.dev.TpmsDataSrc;
-import com.tpms.utils.Log;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

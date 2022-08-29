@@ -7,7 +7,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -28,7 +27,7 @@ public class TpmsService extends Service {
         @Override // java.lang.Runnable
         public void run() {
             try {
-                ActivityManager am = (ActivityManager) TpmsService.this.getSystemService(Context.ACTIVITY_SERVICE);
+                ActivityManager am = (ActivityManager) TpmsService.this.getSystemService("activity");
                 ComponentName cn = am.getRunningTasks(1).get(0).topActivity;
                 Log.d("TestService", "pkg:" + cn.getPackageName());
                 Log.d("TestService", "cls:" + cn.getClassName());
@@ -49,8 +48,8 @@ public class TpmsService extends Service {
 
     private Notification getForegroundNotification() {
         if (Build.VERSION.SDK_INT >= 26) {
-            NotificationChannel notificationChannel = new NotificationChannel("com.dfz.tpms", "tpms", NotificationManager.IMPORTANCE_HIGH);
-            NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            NotificationChannel notificationChannel = new NotificationChannel("com.dfz.tpms", "tpms", 4);
+            NotificationManager notificationManager = (NotificationManager) getSystemService("notification");
             notificationManager.createNotificationChannel(notificationChannel);
         }
         Intent intent = new Intent(this, TpmsMainActivity.class);
