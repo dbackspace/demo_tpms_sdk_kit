@@ -1,7 +1,5 @@
 package com.difz.tpmsdemo.newcopy.biz;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.text.TextUtils;
@@ -18,10 +16,6 @@ import com.difz.tpmsdemo.newcopy.modle.ShakeHands;
 import com.difz.tpmsdemo.newcopy.modle.TiresState;
 import com.difz.tpmsdemo.newcopy.modle.TiresStateEvent;
 import com.difz.tpmsdemo.newcopy.utils.Log;
-import com.difz.tpmsdemo.newcopy.utils.SoundPoolCtrl;
-import com.difz.tpmsdemo.newcopy.utils.SoundPoolCtrl2;
-import com.difz.tpmsdemo.newcopy.widget.CDialog2;
-import com.difz.tpmsdemo.newcopy.widget.ClickToast;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -35,13 +29,8 @@ import java.util.Map;
 public class Tpms {
     private static final String BOOT_COMPLATE = "android.intent.action.BOOT_COMPLETED";
     TpmsApplication app;
-    AlertDialog dlg;
-    CDialog2 mErrorDlg;
     Handler mHeader;
     protected SharedPreferences mPreferences;
-    SoundPoolCtrl mSoundPoolCtrl;
-    CDialog2 mTimedlg;
-    protected WaringUI mUI;
     String TAG = "Tpms";
     Util Util = null;
     FrameEncode mencode = null;
@@ -49,13 +38,11 @@ public class Tpms {
     AlarmAgrs mAlarmAgrs = new AlarmAgrs();
     boolean mIsInit = false;
     int mZhuDongBaojin = 1;
-    int mNotificationState = -1;
     String mWenduDanwei = "℃";
     String mYaliDanwei = "Bar";
     int mHiTempStamp = 75;
     int mHiPressStamp = 310;
     int mLowPressStamp = 180;
-    ClickToast mErrorToast = null;
     boolean mIsSeedAckOk = true;
     boolean mIsPairedId = false;
     Runnable getTpmsState = new Runnable() { // from class: com.tpms.biz.Tpms.1
@@ -77,7 +64,6 @@ public class Tpms {
         initData();
         EventBus.getDefault().register(this);
         this.app = _app;
-        this.mSoundPoolCtrl = new SoundPoolCtrl2(_app.getApplicationContext());
     }
 
     private void initData() {
@@ -121,8 +107,6 @@ public class Tpms {
         if (!this.mIsInit) {
             return;
         }
-        StopSound("");
-        closeFloatWindow();
         clearAlarmCntrol();
         EventBus.getDefault().unregister(this);
         this.mIsInit = false;
@@ -134,19 +118,6 @@ public class Tpms {
         this.mBackLeft.mAlarmCntrols = new HashMap();
         this.mBackRight.mAlarmCntrols = new HashMap();
         this.mSpareTire.mAlarmCntrols = new HashMap();
-    }
-
-    public void closeFloatWindow() {
-        ClickToast clickToast = this.mErrorToast;
-        if (clickToast != null) {
-            clickToast.hideCustomToast();
-            this.mErrorToast = null;
-        }
-        CDialog2 cDialog2 = this.mTimedlg;
-        if (cDialog2 != null) {
-            cDialog2.hideCustomToast();
-            this.mTimedlg = null;
-        }
     }
 
     public void shakeHand() {
@@ -414,16 +385,6 @@ public class Tpms {
         if (alarm.mState.error.isEmpty() || getZhuDongBaojin() == 0) {
             return;
         }
-        showAlarmDialog((title + "请检查!") + alarm.mState.error);
-    }
-
-    protected void showAlarmDialog(String str) {
-        this.dlg = new AlertDialog.Builder(this.app).setTitle("系统提示").setMessage(str).setPositiveButton("确定", new DialogInterface.OnClickListener() { // from class: com.tpms.biz.Tpms.2
-            @Override // android.content.DialogInterface.OnClickListener
-            public void onClick(DialogInterface dialog, int which) {
-                Tpms.this.dlg.dismiss();
-            }
-        }).show();
     }
 
     /* JADX INFO: Access modifiers changed from: private */
@@ -466,13 +427,6 @@ public class Tpms {
         this.mPreferences.edit().putBoolean("ShowUiEnable", enable).commit();
     }
 
-    public void setSoundWarringEnable(boolean enable) {
-        if (!enable) {
-            StopSound("");
-        }
-        this.mPreferences.edit().putBoolean("SoundWarringEnable", enable).commit();
-    }
-
     public boolean getShowUiEnable() {
         return this.mPreferences.getBoolean("ShowUiEnable", true);
     }
@@ -482,20 +436,6 @@ public class Tpms {
         String str = this.TAG;
         Log.i(str, "getSoundWarringEnable:" + bret);
         return bret;
-    }
-
-    public void setBettaWarringEnable(boolean enable) {
-        this.mPreferences.edit().putBoolean("BettaWarringEnable", enable).commit();
-        if (!enable && getSoundGuid().contains("电压过低")) {
-            StopSound("");
-        }
-    }
-
-    public void setConnectWarringEnable(boolean enable) {
-        this.mPreferences.edit().putBoolean("ConnectWarringEnable", enable).commit();
-        if (!enable && getSoundGuid().contains("连接异常")) {
-            StopSound("");
-        }
     }
 
     public void setSparetireEnable(boolean enable) {
@@ -615,23 +555,6 @@ public class Tpms {
     }
 
     public void exchange_sp_br() {
-    }
-
-    /* JADX INFO: Access modifiers changed from: protected */
-    public void playerSound(String guid) {
-        if (!isDevCheckOk()) {
-            return;
-        }
-        this.mSoundPoolCtrl.player(guid);
-    }
-
-    /* JADX INFO: Access modifiers changed from: protected */
-    public void StopSound(String guid) {
-        this.mSoundPoolCtrl.stop(guid);
-    }
-
-    public String getSoundGuid() {
-        return this.mSoundPoolCtrl.getSoundGuid();
     }
 
     public void setForeground(boolean bForeground) {

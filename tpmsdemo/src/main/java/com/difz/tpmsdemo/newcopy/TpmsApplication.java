@@ -19,7 +19,6 @@ public class TpmsApplication extends Application {
     private Tpms tpms;
     public String TAG = TpmsApplication.class.getSimpleName();
     TpmsDataSrc datasrc = null;
-    BKReceiver mReceive = null;
     private BroadcastReceiver mReceiver = new BroadcastReceiver() { // from class: com.syt.tmps.TpmsApplication.1
         @Override // android.content.BroadcastReceiver
         public void onReceive(Context arg0, Intent intent) {

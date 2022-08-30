@@ -3,12 +3,8 @@ package com.difz.tpmsdemo.newcopy.biz;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Handler;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.difz.tpmsdemo.R;
 import com.difz.tpmsdemo.newcopy.TpmsApplication;
@@ -21,12 +17,8 @@ import com.difz.tpmsdemo.newcopy.modle.HeartbeatEvent;
 import com.difz.tpmsdemo.newcopy.modle.TimeSeedEvent;
 import com.difz.tpmsdemo.newcopy.modle.TiresState;
 import com.difz.tpmsdemo.newcopy.modle.TiresStateEvent;
-import com.difz.tpmsdemo.newcopy.modle.TpmsDevErrorEvent;
 import com.difz.tpmsdemo.newcopy.utils.Log;
-import com.difz.tpmsdemo.newcopy.widget.CDialog2;
-import com.difz.tpmsdemo.newcopy.widget.ClickToast;
 
-import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -63,7 +55,6 @@ public class Tpms3 extends Tpms {
     int mZhuDongBaojin = 1;
     Handler mTimerCheckSeed = null;
     long startDataTime = -1;
-    CDialog2 mConnectErrorDlg = null;
     Runnable mDataCheckTimer = new Runnable() { // from class: com.tpms.biz.Tpms3.1
         @Override // java.lang.Runnable
         public void run() {
@@ -72,35 +63,12 @@ public class Tpms3 extends Tpms {
             String str = Tpms3.this.TAG;
             Log.i(str, "mDataCheckTimer startDataTime:" + Tpms3.this.startDataTime + ";datTime:" + datTime);
             if (Tpms3.this.startDataTime != -1 && datTime > 120) {
-                Tpms3.this.showConnectErrDlg();
                 Tpms3 tpms3 = Tpms3.this;
                 tpms3.startDataTime = -1L;
                 tpms3.mDataCheckHander.postDelayed(Tpms3.this.mDataCheckTimer, 3000L);
                 return;
             }
             Tpms3.this.mDataCheckHander.postDelayed(Tpms3.this.mDataCheckTimer, 3000L);
-        }
-    };
-    View.OnClickListener btn_click = new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.7
-        @Override // android.view.View.OnClickListener
-        public void onClick(View arg0) {
-            Tpms3.this.mCurrentErrCtrl.mTimeInterval = Long.parseLong((String) arg0.getTag());
-            long time2 = System.currentTimeMillis() / 1000;
-            Tpms3.this.mCurrentErrCtrl.mTimeStamp = time2;
-            Log.i("ttimeout", "showTimeDialog...mTimeInterval:" + Tpms3.this.mCurrentErrCtrl.mTimeInterval);
-            Tpms3.this.mTimedlg.hideCustomToast();
-            Tpms3 tpms3 = Tpms3.this;
-            tpms3.StopSound(tpms3.mCurrentErrCtrl.mErrorKey);
-            Tpms3 tpms32 = Tpms3.this;
-            tpms32.mErrorToast = null;
-            tpms32.mTimedlg = null;
-            if (Tpms3.homeListenerReceiver != null) {
-                try {
-                    Tpms3.this.app.unregisterReceiver(Tpms3.homeListenerReceiver);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
         }
     };
     Runnable mHeartbeat = new Runnable() { // from class: com.tpms.biz.Tpms3.9
@@ -115,7 +83,6 @@ public class Tpms3 extends Tpms {
         public void run() {
             if (!Tpms3.this.mIsSeedAckOk) {
                 Log.i(Tpms3.this.TAG, "CheckEncryptionTime");
-                Tpms3.this.showErrorDlg();
             }
         }
     };
@@ -308,17 +275,12 @@ public class Tpms3 extends Tpms {
             Log.w(this.TAG, "ack.mSeedAck==ack0");
             this.mIsSeedAckOk = true;
             this.mErrorCount = 0;
-            if (this.mErrorDlg != null) {
-                this.mErrorDlg.hideCustomToast();
-                this.mErrorDlg = null;
-                return;
-            }
             return;
         }
         Log.w(this.TAG, "ack.mSeedAck!=ack0");
         this.mErrorCount++;
         if (this.mErrorCount > 5) {
-            showErrorDlg();
+            Log.e(this.TAG, "error Count > 5 - show dialog");
         }
     }
 
@@ -338,16 +300,9 @@ public class Tpms3 extends Tpms {
         }
         Log.i(this.TAG, "onEventMainThread(TiresStateEvent alarm)");
         sendTimeSeed();
-        hideConnectErrDlg();
         this.startDataTime = System.currentTimeMillis();
-        CDialog2 cDialog2 = this.mConnectErrorDlg;
-        if (cDialog2 != null) {
-            cDialog2.hideCustomToast();
-            this.mConnectErrorDlg = null;
-        } else {
-            this.mDataCheckHander.removeCallbacks(this.CheckEncryptionTime);
-            this.mDataCheckHander.postDelayed(this.CheckEncryptionTime, 20000L);
-        }
+        this.mDataCheckHander.removeCallbacks(this.CheckEncryptionTime);
+        this.mDataCheckHander.postDelayed(this.CheckEncryptionTime, 20000L);
         String title = "";
         String tiresKey = "";
         if (alarm.tires == 1) {
@@ -431,46 +386,6 @@ public class Tpms3 extends Tpms {
         throw new UnsupportedOperationException("Method not decompiled: com.tpms.biz.Tpms3.showAlarmDialog(java.lang.String, java.lang.String, com.tpms.modle.TiresStateEvent):void");
     }
 
-    private void IsOkClearInTimeAndCUI(TiresState state, String tires_key) {
-        if (!state.NoSignal) {
-            resetInTIme("NoSignal", state);
-            clearUIAndSound(tires_key + "NoSignal");
-        }
-        if (!state.Leakage) {
-            resetInTIme("Leakage", state);
-            clearUIAndSound(tires_key + "Leakage");
-        }
-        if (state.AirPressure < this.mHiPressStamp) {
-            resetInTIme("mHiPressStamp", state);
-            clearUIAndSound(tires_key + "mHiPressStamp");
-        }
-        if (state.AirPressure > this.mLowPressStamp) {
-            resetInTIme("mLowPressStamp", state);
-            clearUIAndSound(tires_key + "mLowPressStamp");
-        }
-        if (state.Temperature < this.mHiTempStamp) {
-            resetInTIme("mHiTempStamp", state);
-            clearUIAndSound(tires_key + "mHiTempStamp");
-        }
-        if (!state.LowPower) {
-            resetInTIme("LowPower", state);
-            clearUIAndSound(tires_key + "LowPower");
-        }
-    }
-
-    private void clearUIAndSound(String guid) {
-        if (this.mErrorToast != null && this.mErrorToast.getGuid().equals(guid)) {
-            Log.i("testtpms", "================:" + guid);
-            this.mErrorToast.hideCustomToast();
-            this.mErrorToast = null;
-            if (this.mTimedlg != null) {
-                this.mTimedlg.hideCustomToast();
-                this.mTimedlg = null;
-            }
-        }
-        StopSound(guid);
-    }
-
     private void resetInTIme(String key, TiresState state) {
         AlarmCntrol ctrl = state.mAlarmCntrols.get(key);
         if (ctrl != null) {
@@ -483,116 +398,6 @@ public class Tpms3 extends Tpms {
         Intent inte = new Intent(this.app, TpmsMainActivity.class);
         inte.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.app.startActivity(inte);
-    }
-
-    private void showErrorToast() {
-        if (!isDevCheckOk()) {
-            return;
-        }
-        this.mErrorToast = new ClickToast();
-        View view = LayoutInflater.from(this.app.getApplicationContext()).inflate(R.layout.click_error_toast, (ViewGroup) null);
-        view.findViewById(R.id.relativelayout).setOnClickListener(new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.2
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                Tpms3.this.startMainActivity();
-            }
-        });
-        view.findViewById(R.id.close_btn).setOnClickListener(new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.3
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                if (Tpms3.this.mErrorToast != null) {
-                    Tpms3.this.mErrorToast.hideCustomToast();
-                }
-                Tpms3.this.showTimeDialog();
-            }
-        });
-        this.mErrorToast.setGuid(this.mCurrentErrCtrl.mErrorKey);
-        this.mErrorToast.initToast(this.app.getApplicationContext(), view, this.mCurrentErrCtrl.mError);
-        this.mErrorToast.show();
-    }
-
-    /* JADX INFO: Access modifiers changed from: private */
-    public void showErrorDlg() {
-        if (this.mErrorDlg == null && !this.mIsPairedId) {
-            String str = android.util.Log.getStackTraceString(new Throwable());
-            Log.i(this.TAG, "showErrorDlg");
-            Log.i(this.TAG, str);
-            View view = LayoutInflater.from(this.app.getApplicationContext()).inflate(R.layout.error_dialog, (ViewGroup) null);
-            this.mErrorDlg = CDialog2.makeToast(this.app, view, "");
-            view.findViewById(R.id.btn_is_ok).setOnClickListener(new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.4
-                @Override // android.view.View.OnClickListener
-                public void onClick(View v) {
-                    Tpms3.this.mErrorDlg.hideCustomToast();
-                    Tpms3.this.mErrorDlg = null;
-                }
-            });
-            this.mErrorDlg.show();
-            EventBus.getDefault().post(new TpmsDevErrorEvent(0));
-        }
-    }
-
-    /* JADX INFO: Access modifiers changed from: private */
-    public void showConnectErrDlg() {
-        Log.i(this.TAG, "showConnectErrDlg1");
-        if (this.mConnectErrorDlg != null || this.mIsPairedId) {
-            return;
-        }
-        Log.i(this.TAG, "showConnectErrDlg2");
-        View view = LayoutInflater.from(this.app.getApplicationContext()).inflate(R.layout.connect_error_dialog, (ViewGroup) null);
-        this.mConnectErrorDlg = CDialog2.makeToast(this.app, view, "");
-        view.findViewById(R.id.btn_is_ok).setOnClickListener(new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.5
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                Tpms3.this.mConnectErrorDlg.hideCustomToast();
-                Tpms3.this.mConnectErrorDlg = null;
-            }
-        });
-        this.mConnectErrorDlg.show();
-    }
-
-    private void hideConnectErrDlg() {
-        CDialog2 cDialog2 = this.mConnectErrorDlg;
-        if (cDialog2 == null) {
-            return;
-        }
-        cDialog2.hideCustomToast();
-        this.mConnectErrorDlg = null;
-    }
-
-    /* JADX INFO: Access modifiers changed from: private */
-    public void showTimeDialog() {
-        View view = LayoutInflater.from(this.app.getApplicationContext()).inflate(R.layout.time_dialog, (ViewGroup) null);
-        this.mTimedlg = CDialog2.makeToast(this.app, view, "");
-        View v0 = view.findViewById(R.id.mainbtn_0);
-        View v1 = view.findViewById(R.id.mainbtn_1);
-        View v2 = view.findViewById(R.id.mainbtn_2);
-        View v3 = view.findViewById(R.id.mainbtn_3);
-        v0.setOnClickListener(this.btn_click);
-        v1.setOnClickListener(this.btn_click);
-        v2.setOnClickListener(this.btn_click);
-        v3.setOnClickListener(this.btn_click);
-        view.findViewById(R.id.time_dialog_plane).setOnClickListener(new View.OnClickListener() { // from class: com.tpms.biz.Tpms3.6
-            @Override // android.view.View.OnClickListener
-            public void onClick(View v) {
-                if (Tpms3.this.mTimedlg != null) {
-                    Tpms3.this.mTimedlg.hideCustomToast();
-                }
-                Tpms3.this.mErrorToast.hideCustomToast();
-                Tpms3 tpms3 = Tpms3.this;
-                tpms3.mErrorToast = null;
-                tpms3.mTimedlg = null;
-                if (Tpms3.homeListenerReceiver != null) {
-                    try {
-                        Tpms3.this.app.unregisterReceiver(Tpms3.homeListenerReceiver);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-        IntentFilter homeFilter = new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-        this.app.registerReceiver(homeListenerReceiver, homeFilter);
-        this.mTimedlg.show();
     }
 
     public void queryAllState() {

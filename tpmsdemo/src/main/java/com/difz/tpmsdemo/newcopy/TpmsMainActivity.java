@@ -1,19 +1,16 @@
 package com.difz.tpmsdemo.newcopy;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.difz.tpmsdemo.R;
 import com.difz.tpmsdemo.newcopy.biz.Tpms;
@@ -23,7 +20,6 @@ import com.difz.tpmsdemo.newcopy.modle.TiresStateEvent;
 import com.difz.tpmsdemo.newcopy.modle.TpmsDevErrorEvent;
 import com.difz.tpmsdemo.newcopy.stddev.TpmsDataSrc;
 import com.difz.tpmsdemo.newcopy.utils.Log;
-import com.difz.tpmsdemo.newcopy.widget.PAlertDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -87,9 +83,7 @@ public class TpmsMainActivity extends Activity {
     TiresState mBackRight;
     TiresState mFrontLeft;
     TiresState mFrontRight;
-    AlertDialog mPDlg;
     TiresState mSpareTire;
-    Handler mSyncHandler;
     Tpms mTpms;
     @ViewInject(R.id.tv_sptires_betta)
     TextView tv_sptires_betta;
@@ -102,16 +96,6 @@ public class TpmsMainActivity extends Activity {
     private String TAG = "TpmsMainActivity";
     TpmsDataSrc datasrc = null;
     TpmsApplication app = null;
-    Runnable mSyncRunAble = new Runnable() { // from class: com.tpms.view.TpmsMainActivity.1
-        @Override // java.lang.Runnable
-        public void run() {
-            if (TpmsMainActivity.this.mPDlg.isShowing()) {
-                TpmsMainActivity.this.mPDlg.dismiss();
-                TpmsMainActivity tpmsMainActivity = TpmsMainActivity.this;
-                Toast.makeText(tpmsMainActivity, tpmsMainActivity.getString(R.string.xingxiduqushibai), Toast.LENGTH_LONG).show();
-            }
-        }
-    };
     private final BroadcastReceiver filterReceiver = new BroadcastReceiver() { // from class: com.tpms.view.TpmsMainActivity.2
         @Override // android.content.BroadcastReceiver
         public void onReceive(Context context, Intent intent) {
@@ -140,9 +124,6 @@ public class TpmsMainActivity extends Activity {
         this.app.startTpms();
         this.mTpms = this.app.getTpms();
         this.datasrc = this.app.getDataSrc();
-        this.mPDlg = PAlertDialog.showDiolg(this, getString(R.string.zhengzaiduquzhong));
-        this.mSyncHandler = new Handler();
-        this.mSyncHandler.postDelayed(this.mSyncRunAble, 14000L);
         if (Build.VERSION.SDK_INT >= 23 && !Settings.canDrawOverlays(this)) {
             Intent intent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
             startActivity(intent);
@@ -187,19 +168,9 @@ public class TpmsMainActivity extends Activity {
     }
 
     @Override // android.app.Activity
-    protected void onStart() {
-        this.mTpms.closeFloatWindow();
-        super.onStart();
-    }
-
-    public void onClick(View v) {
-    }
-
-    @Override // android.app.Activity
     protected void onResume() {
         super.onResume();
         this.mTpms.setForeground(true);
-        this.mTpms.closeFloatWindow();
         boolean spret = this.app.getTpms().getSparetireEnable();
         if (spret) {
             this.ll_sptires_contioner.setVisibility(View.VISIBLE);
@@ -217,14 +188,6 @@ public class TpmsMainActivity extends Activity {
     @Override // android.app.Activity
     protected void onDestroy() {
         super.onDestroy();
-        AlertDialog alertDialog = this.mPDlg;
-        if (alertDialog != null) {
-            alertDialog.dismiss();
-        }
-        Handler handler = this.mSyncHandler;
-        if (handler != null) {
-            handler.removeCallbacks(this.mSyncRunAble);
-        }
         try {
             EventBus.getDefault().unregister(this);
         } catch (Exception e) {
@@ -242,7 +205,6 @@ public class TpmsMainActivity extends Activity {
         if (!this.mTpms.isDevCheckOk()) {
             return;
         }
-        this.mPDlg.dismiss();
         Log.i(this.TAG, "收到胎压装态数据");
         if (alarm.tires == 1 && this.mFrontLeft != null) {
             alarm.mState.TiresID = this.mFrontLeft.TiresID;
