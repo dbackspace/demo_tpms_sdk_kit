@@ -26,7 +26,6 @@ import com.difz.tpmsdemo.newcopy.utils.Log;
 import com.difz.tpmsdemo.newcopy.widget.PAlertDialog;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-import com.lidroid.xutils.view.annotation.event.OnClick;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -340,18 +339,6 @@ public class TpmsMainActivity extends Activity {
         }
         nerror.setText(title);
         infos.getBackground().setLevel(0);
-    }
-
-    @OnClick({R.id.btn_paire_id})
-    public void btn_paire_id(View v) {
-//        Intent inte = new Intent(this, PaireIDActivity.class);
-//        startActivity(inte);
-    }
-
-    @OnClick({R.id.btn_tpms_set})
-    public void btn_tpms_set(View v) {
-//        Intent inte = new Intent(this, SetActivity.class);
-//        startActivity(inte);
     }
 
     String getPressure(int val) {

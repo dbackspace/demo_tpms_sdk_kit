@@ -1,21 +1,12 @@
 package com.difz.tpmsdemo.newcopy.biz;
 
 import android.app.AlertDialog;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Handler;
 import android.text.TextUtils;
 
-import com.difz.tpmsdemo.R;
 import com.difz.tpmsdemo.newcopy.TpmsApplication;
-import com.difz.tpmsdemo.newcopy.TpmsMainActivity;
 import com.difz.tpmsdemo.newcopy.decode.FrameDecode;
 import com.difz.tpmsdemo.newcopy.encode.FrameEncode;
 import com.difz.tpmsdemo.newcopy.encode.Util;
@@ -40,8 +31,6 @@ import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.core.app.NotificationCompat;
-
 /* loaded from: classes.dex */
 public class Tpms {
     private static final String BOOT_COMPLATE = "android.intent.action.BOOT_COMPLETED";
@@ -53,7 +42,6 @@ public class Tpms {
     SoundPoolCtrl mSoundPoolCtrl;
     CDialog2 mTimedlg;
     protected WaringUI mUI;
-    NotificationManager notificationManager;
     String TAG = "Tpms";
     Util Util = null;
     FrameEncode mencode = null;
@@ -89,7 +77,6 @@ public class Tpms {
         initData();
         EventBus.getDefault().register(this);
         this.app = _app;
-        this.notificationManager = (NotificationManager) this.app.getSystemService("notification");
         this.mSoundPoolCtrl = new SoundPoolCtrl2(_app.getApplicationContext());
     }
 
@@ -666,73 +653,6 @@ public class Tpms {
         this.mencode.reset_dev();
         Util.Sleep(100L);
         this.mencode.reset_dev();
-    }
-
-    public void showNormalNotifMsg() {
-        Log.i(this.TAG, "showNormalNotifMsg mNotificationState:" + this.mNotificationState);
-        if (this.mNotificationState == 1) {
-            return;
-        }
-        try {
-            this.notificationManager.cancelAll();
-            Log.i(this.TAG, "showNormalNotifMsg cancelAll");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (Build.VERSION.SDK_INT >= 26) {
-            NotificationChannel notificationChannel = new NotificationChannel("com.dfz.tpms", "tpms", NotificationManager.IMPORTANCE_HIGH);
-            this.notificationManager.createNotificationChannel(notificationChannel);
-        }
-        Intent intent = new Intent(this.app, TpmsMainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this.app, 112, intent, 0);
-        Notification notification = new NotificationCompat.Builder(this.app, "com.dfz.tpmsdemo").setContentTitle(this.app.getString(R.string.zhuangtailantaiya)).setContentText(this.app.getString(R.string.zhuangtailantaiyazhengchang)).setWhen(System.currentTimeMillis()).setSmallIcon(R.drawable.ic_notif_ok).setLargeIcon(BitmapFactory.decodeResource(this.app.getResources(), R.drawable.ic_notif_ok)).setContentIntent(pendingIntent).build();
-        notification.flags |= 2;
-        try {
-            this.app.getTpmsServices().startForeground(112, notification);
-        } catch (Exception e2) {
-            this.notificationManager.notify(112, notification);
-        }
-        this.mNotificationState = 1;
-        Log.i(this.TAG, "lyc cur showNormalNotifMsg");
-    }
-
-    /* JADX INFO: Access modifiers changed from: protected */
-    public void showErrorNotifMsg() {
-        String str = this.TAG;
-        Log.i(str, "showErrorNotifMsg mNotificationState:" + this.mNotificationState);
-        if (!isDevCheckOk()) {
-            Log.i(this.TAG, "showErrorNotifMsg !isDevCheckOk()");
-        } else {
-            showErrorNotifMsg2();
-        }
-    }
-
-    public void showErrorNotifMsg2() {
-        if (this.mNotificationState == 0) {
-            return;
-        }
-        try {
-            this.notificationManager.cancelAll();
-            Log.i(this.TAG, "showErrorNotifMsg2 cancelAll");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        if (Build.VERSION.SDK_INT >= 26) {
-            NotificationChannel notificationChannel = new NotificationChannel("com.dfz.tpms", "tpms", 4);
-            this.notificationManager.createNotificationChannel(notificationChannel);
-        }
-        Intent intent = new Intent(this.app, TpmsMainActivity.class);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this.app, 112, intent, 0);
-        Notification notification = new NotificationCompat.Builder(this.app, "com.dfz.tpms").setContentTitle(this.app.getString(R.string.zhuangtailantaiya)).setContentText(this.app.getString(R.string.ztltaiyayichang)).setWhen(System.currentTimeMillis()).setSmallIcon(R.drawable.ic_notif_error).setLargeIcon(BitmapFactory.decodeResource(this.app.getResources(), R.drawable.ic_notif_ok)).setContentIntent(pendingIntent).build();
-        notification.flags |= 2;
-        try {
-            this.app.getTpmsServices().startForeground(112, notification);
-        } catch (Exception e2) {
-            e2.printStackTrace();
-            this.notificationManager.notify(112, notification);
-        }
-        Log.i(this.TAG, "lyc cur showErrorNotifMsg2");
-        this.mNotificationState = 0;
     }
 
     public boolean isAllOk() {

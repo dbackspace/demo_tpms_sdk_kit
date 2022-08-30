@@ -1,13 +1,11 @@
 package com.difz.tpmsdemo.newcopy;
 
 import android.app.Application;
-import android.app.Service;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.hardware.usb.UsbDevice;
-import android.os.Build;
 import android.os.Process;
 
 import com.difz.tpmsdemo.newcopy.biz.Tpms;
@@ -18,7 +16,6 @@ import com.difz.tpmsdemo.newcopy.utils.Log;
 
 /* loaded from: classes.dex */
 public class TpmsApplication extends Application {
-    private Service mAppService;
     private Tpms tpms;
     public String TAG = TpmsApplication.class.getSimpleName();
     TpmsDataSrc datasrc = null;
@@ -49,14 +46,6 @@ public class TpmsApplication extends Application {
         }
     };
 
-    public void attachService(Service service) {
-        this.mAppService = service;
-    }
-
-    public Service getTpmsServices() {
-        return this.mAppService;
-    }
-
     public TpmsApplication() {
         String str = this.TAG;
         Log.i(str, "BTApplication tid:" + Thread.currentThread().getId());
@@ -73,11 +62,6 @@ public class TpmsApplication extends Application {
         Log.setLogToFile(false);
         String str = this.TAG;
         Log.i(str, "App is onCreate tid:" + Thread.currentThread().getId());
-        if (Build.VERSION.SDK_INT >= 26) {
-            startForegroundService(new Intent(this, TpmsService.class));
-        } else {
-            startService(new Intent(this, TpmsService.class));
-        }
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.hardware.usb.action.USB_DEVICE_DETACHED");
         filter.addAction("android.hardware.usb.action.USB_DEVICE_ATTACHED");

@@ -73,7 +73,6 @@ public class Tpms3 extends Tpms {
             Log.i(str, "mDataCheckTimer startDataTime:" + Tpms3.this.startDataTime + ";datTime:" + datTime);
             if (Tpms3.this.startDataTime != -1 && datTime > 120) {
                 Tpms3.this.showConnectErrDlg();
-                Tpms3.this.showErrorNotifMsg();
                 Tpms3 tpms3 = Tpms3.this;
                 tpms3.startDataTime = -1L;
                 tpms3.mDataCheckHander.postDelayed(Tpms3.this.mDataCheckTimer, 3000L);
@@ -366,15 +365,6 @@ public class Tpms3 extends Tpms {
             this.mBackRight = alarm.mState;
             title = title + this.app.getResources().getString(R.string.youhouluntai);
             tiresKey = tiresKey + "rightback";
-            if (isAllTiresOk()) {
-                if (!isDevCheckOk()) {
-                    Log.i(this.TAG, "showNormalNotifMsg but checkerror");
-                } else {
-                    showNormalNotifMsg();
-                }
-            } else {
-                showErrorNotifMsg();
-            }
         } else if (alarm.tires == 0) {
             alarm.mState.mAlarmCntrols = this.mBackLeft.mAlarmCntrols;
             this.mBackLeft = alarm.mState;
@@ -536,7 +526,6 @@ public class Tpms3 extends Tpms {
                     Tpms3.this.mErrorDlg = null;
                 }
             });
-            showErrorNotifMsg2();
             this.mErrorDlg.show();
             EventBus.getDefault().post(new TpmsDevErrorEvent(0));
         }
@@ -722,7 +711,6 @@ public class Tpms3 extends Tpms {
             this.mTimerCheckSeed = null;
         }
         this.startDataTime = -1L;
-        showErrorNotifMsg();
     }
 
     public void sendTimeSeed() {
